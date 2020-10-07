@@ -1,4 +1,4 @@
-package com.example.http.capacity.simulator.nonblocking.controller
+package com.example.http.capacity.simulator.controller
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -14,11 +14,8 @@ import kotlin.random.Random.Default.nextInt
 class NonBlockingController(private val webClient: WebClient) {
 
     @GetMapping
-    suspend fun simulateDelay(
-        @RequestParam(name = "delay", required = false, defaultValue = "5") delay: Int
-    ): String {
+    suspend fun simulateDelay(@RequestParam(name = "delay", required = false, defaultValue = "5") delay: Int): String {
         val uri = "/" + nextInt(0, delay)
-        return webClient.get().uri(uri)
-            .awaitExchange().awaitBody()
+        return webClient.get().uri(uri).awaitExchange().awaitBody()
     }
 }
