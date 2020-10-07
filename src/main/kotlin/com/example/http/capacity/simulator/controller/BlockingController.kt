@@ -1,4 +1,4 @@
-package com.example.http.capacity.simulator.blocking.controller
+package com.example.http.capacity.simulator.controller
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
