@@ -1,11 +1,11 @@
-package com.example.http.capacity.simulator.launcher
+package com.example.http.capacity.simulator.nonblocking
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication(scanBasePackages = ["com.example.http.capacity.simulator"])
-class Launcher
+class NonBlockingLauncher
 
 fun main() {
-    runApplication<Launcher>()
+    runApplication<NonBlockingLauncher>()
 }

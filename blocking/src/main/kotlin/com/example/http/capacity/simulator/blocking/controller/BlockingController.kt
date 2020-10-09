@@ -1,4 +1,4 @@
-package com.example.http.capacity.simulator.controller
+package com.example.http.capacity.simulator.blocking.controller
 
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -13,8 +13,7 @@ import kotlin.random.Random.Default.nextInt
 class BlockingController(private val restTemplate: RestTemplate) {
 
     @GetMapping
-    fun simulateDelay(@RequestParam(name = "delay", required = false, defaultValue = "5") delay: Int): String {
-        val uri = "/" + nextInt(0, delay)
-        return restTemplate.getForEntity<String>(uri).body ?: ""
+    fun simulateDelay(@RequestParam(name = "delay") delay: Long): String {
+        return restTemplate.getForEntity<String>("/delay?delay=$delay").body ?: ""
     }
 }
