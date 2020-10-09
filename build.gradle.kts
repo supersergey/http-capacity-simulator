@@ -8,6 +8,10 @@ plugins {
     kotlin("plugin.spring") version "1.4.10"
 }
 
+dependencies {
+    implementation(project(":launcher"))
+}
+
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
@@ -16,10 +20,6 @@ allprojects {
 
     apply(plugin = "kotlin")
     apply(plugin = "kotlin-spring")
-
-    tasks.withType<BootJar> {
-        mainClassName = "com.example.http.capacity.simulator.launcher.LauncherKt.main"
-    }
 
     tasks.withType<KotlinCompile> {
         kotlinOptions {
@@ -31,4 +31,8 @@ allprojects {
     repositories {
         mavenCentral()
     }
+}
+
+tasks.withType<BootJar> {
+    mainClassName = "com.example.http.capacity.simulator.launcher.LauncherKt"
 }

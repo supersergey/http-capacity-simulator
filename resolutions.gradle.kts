@@ -1,5 +1,5 @@
 val springVersion = "2.3.4.RELEASE"
-val coroutinesVersion = "1.3.9"
+val coroutinesVersion = "1.3.8"
 
 gradle.settingsEvaluated {
 
