@@ -16,6 +16,6 @@ class Config {
     fun webClient(): WebClient = WebClient.builder().baseUrl(baseUrl).build()
 
     companion object {
-        const val baseUrl = "http://localhost:8081/api/delay"
+        const val baseUrl = "http://host.docker.internal:8081/api/delay"
     }
 }
