@@ -15,7 +15,11 @@ import reactor.core.publisher.Mono
 class NonBlockingController(private val webClient: WebClient) {
 
     @GetMapping
-    suspend fun simulateDelay(@RequestParam(name = "delay") delay: Int): String {
-        return webClient.get().uri("?delay=$delay").awaitExchange().awaitBody()
+    fun simulateDelay(@RequestParam(name = "delay") delay: Int): String {
+        return GlobalScope.async {
+            runBlocking {
+                webClient.get().uri("?delay=$delay").awaitExchange().awaitBody()
+            }
+        }.await()
     }
 }
